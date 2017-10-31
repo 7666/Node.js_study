@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>聊天室</title>
+    <style>
+      *{
+        border: 0;
+        padding: 0;
+      }
+      html,body{
+        height:100%;
+      }
+      .loading{
+        background-color: #000;
+        width:100%;
+        height: 100%;
+        color:#fff;
+      }
+      .ko{
+        width:500px;
+        height:50px;
+        text-align: center;
+      }
+      body{
+        text-align: center;
+      }
+      .tell{
+        height: 600px;
+        width: 600px;
+        margin: 20px auto;
+        border: 1px solid lightblue;
+        overflow: auto;
+        text-align: center;
+        position: relative;
+      }
+      .child{
+      }
+      .say{
+        border:5px solid black;
+        width: 600px;
+        height: 50px;
+        text-align: center;
+        margin: 20px auto;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <h1>请输入你的昵称:</h1>
+      <input class="ko" type="text" value="">
+    </div>
+    <h1>聊天室</h1>
+    <div class="tell">
+      <div class="child">
+
+      </div>
+
+    </div>
+    <input class="say" type="text" name="" value="">
+    <script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+      var ko = document.getElementsByClassName('ko')[0];
+      var loading = document.querySelector('.loading');
+      var chatFrame = document.querySelector('.child');
+      var say = document.querySelector('.say');
+      var tell = document.querySelector('.tell')
+      var userName;
+
+      document.onkeydown = function(e){
+        if(e.code === 'Enter'){
+          if (ko.value) {
+
+            if(!userName){
+              userName = ko.value;
+              socket.emit('userName',userName);
+            }
+            loading.style.cssText = 'display:none';
+
+          }
+          if(e.code === 'Enter'){
+              if(say.value){
+                socket.emit('say',`${userName}:${say.value}`);
+                say.value = '';
+              }
+            }
+        }
+
+        }
+
+
+      var socket = io('http://192.168.0.162:7666');
+
+      socket.on('user connect',function(data){
+        var mess =  document.createElement('p');
+        mess.innerHTML = data;
+        chatFrame.appendChild(mess);
+        if(chatFrame.offsetHeight > 600){
+          tell.scrollTop = chatFrame.offsetHeight - 600;
+        }
+      })
+
+      socket.on('saycontent',function(data){
+        var mess =  document.createElement('p');
+        mess.innerHTML = data;
+        chatFrame.appendChild(mess);
+        if(chatFrame.offsetHeight > 500){
+          tell.scrollTop = chatFrame.offsetHeight;
+        }
+      })
+
+      socket.on('user disconnect',function(data){
+        var mess =  document.createElement('p');
+        mess.innerHTML = data;
+        chatFrame.appendChild(mess);
+        if(chatFrame.offsetHeight > 500){
+          tell.scrollTop = chatFrame.offsetHeight;
+        }
+      })
+
+      socket.on('count',function(data){
+        var mess =  document.createElement('p');
+        mess.innerHTML = data;
+        chatFrame.appendChild(mess);
+        if(chatFrame.offsetHeight > 500){
+          tell.scrollTop = chatFrame.offsetHeight;
+        }
+      })
+
+
+
+    </script>
+  </body>
+</html>

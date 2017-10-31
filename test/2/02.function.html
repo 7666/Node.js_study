@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var val = 4;
+    var obj = {
+      val: 2,
+      getVal : function(){
+        return ()=> {return this.val}
+      }
+    }
+
+    var result = obj.getVal()();
+    console.log(result);
+
+
+
+
+    var obj2 = {
+      val : 6,
+      getVal : function(){
+        var _this = this;
+        return function(){
+          return _this.val;
+        }
+      }
+    }
+
+    var result1 = obj2.getVal()();
+    console.log(result1);
+    </script>
+  </body>
+</html>
