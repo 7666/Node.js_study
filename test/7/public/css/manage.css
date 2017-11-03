@@ -1,0 +1,85 @@
+*{
+  padding:0;
+  border:0;
+}
+body{
+  text-align: center;
+  background-color: lightyellow;
+}
+button{
+  margin-top:50px;
+  width:100px;
+  height:50px;
+  border-radius: 5px;
+  border: 1px gray solid;
+  background-color: #fff;
+}
+
+button.active{
+  background: #337ab7;
+  color:#fff;
+}
+div{
+  display: none;
+}
+div.active{
+  display: block;
+  background: lightblue;
+  width:100%;
+}
+.info,.delInfo,.miInfo{
+  margin: 0px auto;
+  font-size: 20px;
+  border-collapse: collapse;
+  width: 100%;
+}
+.info td,th,.delInfo td,.miInfo td{
+  border:1px solid #000;
+}
+.all{
+  width:100px;
+  height:50px;
+  background-color:lightgreen;
+}
+.choose{
+  width:200px;
+  height:50px;
+}
+.add input{
+  width:200px;
+  height:50px;
+  margin:10px 0;
+}
+.input2{
+  width:200px;
+  height:50px;
+  margin:10px 0;
+}
+.success,.delsuccess,.misuccess{
+  color:green;
+  display:none;
+}
+.show{
+  /*display: block;*/
+  width:500px;
+  height:300px;
+  background-color: orange;
+  color:#666;
+  position:absolute;
+  left:50%;
+  top:40%;
+  transform: translate(-50%,-50%);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 8px 8px 8px;
+}
+.show1,.show2,.show3,.show4{
+  width:100px;
+  height:20px;
+  margin:10px;
+}
+.key{
+  display: block;
+  background-color: lightyellow;
+  margin-bottom: 50px;
+}

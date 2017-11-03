@@ -21,6 +21,15 @@ function handler(req,res){
 
     })
 
+  }else if(myURL.pathname === '/socket.io.js'){
+    fs.readFile('./socket.io.js',function(err, data){
+      if(!err){
+        res.writeHead(200,{'Content-Type':'text/js'});
+        res.end(data);
+      }else{
+        res.writeHead(500)
+        res.end();
+      }})
   }else{
     res.writeHead(404);
     res.end();
