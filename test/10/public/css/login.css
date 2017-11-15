@@ -1,0 +1,28 @@
+.login{
+  width:500px;
+  height:300px;
+  background-color:orange;
+  margin:300px auto;
+  padding:20px;
+  box-shadow:8px 8px 8px gray;
+  border-radius:20px;
+  text-align: center;
+}
+body{
+  background: linear-gradient(45deg,lightblue,lightgreen);
+}
+input{
+  width:200px;
+  height:40px;
+  padding:5px 10px;
+}
+.user,.pw{
+  width:100%;
+  height:80px;
+}
+#btn{
+  width:300px;
+  height:40px;
+  background-color: rgb(72, 186, 135);
+  color:#fff;
+}
